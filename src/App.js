@@ -17,7 +17,7 @@ function App() {
   React.useEffect(() => {
     window.addEventListener("message", (ev) => {
       console.log(`${ev.origin} sent ${ev.data}`);
-      if (ev.origin !== "http://localhost:3001") {
+      if (ev.origin !== "https://llaw-hopper.github.io") {
         return;
       }
       if (ev.data === "open") {
@@ -38,7 +38,10 @@ function App() {
           <p key={`${c.slice(20)}`}>{c}</p>
         ))}
 
-        <iframe src="http://localhost:3001"></iframe>
+        <iframe
+          src="https://llaw-hopper.github.io/iframe-child-site/"
+          sandbox="allow-scripts allow-same-origin"
+        ></iframe>
 
         {copy.slice(2).map((c) => (
           <p key={`${c.slice(20)}`}>{c}</p>
@@ -48,7 +51,8 @@ function App() {
       <Modal open={open}>
         <iframe
           className="loaded-content"
-          src="http://localhost:3001?content=1"
+          src="https://llaw-hopper.github.io/iframe-child-site/?content=1"
+          sandbox="allow-scripts allow-same-origin"
         ></iframe>
       </Modal>
     </div>
